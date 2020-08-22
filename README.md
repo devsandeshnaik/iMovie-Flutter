@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # imovie
 
 A new Flutter project.
@@ -14,3 +15,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# iMovie-Flutter
+iMovie App with Flutter
+>>>>>>> af21616931d6a80c57d2a5b5ce5da3b2f105b970
