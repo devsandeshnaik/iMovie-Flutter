@@ -1,43 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:imovie/Helpers/Constants.dart';
-import 'package:imovie/NetworkCalls/NowPlayingMoviesAPICall.dart';
-import 'package:imovie/Screens/MovieCard.dart';
+import 'MovieList.dart';
 
-import '../Model/Movie.dart';
-
-class Home extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _Home();
-  }
-}
-
-class _Home extends State<Home> {
-  List<Movie> movies = [];
-
-  @override
-  void initState() {
-    NowPlayingMovieAPI.getMovies(Constants.NowPlayingMovieAPI).then((value) {
-      setState(() {
-        movies = value;
-      });
-    });
-    super.initState();
-  }
-
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('iMovie'),
-      ),
-      body: ListView.builder(
-        itemCount: movies.length,
-        itemBuilder: (_, index) {
-          return MovieCard(
-            movie: movies[index],
-          );
-        },
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('iMovie'),
+          bottom: TabBar(
+            tabs: [Tab(text: 'Now Playing'), Tab(text: "Top Rated")],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            MovieList(Constants.NowPlayingMovieAPI),
+            MovieList(Constants.TopRatedMovieAPI)
+          ],
+        ),
       ),
     );
   }

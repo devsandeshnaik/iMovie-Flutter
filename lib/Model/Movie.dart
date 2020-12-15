@@ -46,4 +46,16 @@ class Movie {
         genreIds: json['genre_ids'],
         voteAverage: json['vote_average']);
   }
+
+  String posterImageURL() {
+    var imagePath = "https://image.tmdb.org/t/p/original" + posterPath;
+    print(imagePath);
+    return imagePath;
+  }
+
+  String backDropImageURL() {
+    var imagePath = "https://image.tmdb.org/t/p/original" + backdropPath;
+    print(imagePath);
+    return imagePath;
+  }
 }

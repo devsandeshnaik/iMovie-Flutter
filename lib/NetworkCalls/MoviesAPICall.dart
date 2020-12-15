@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:imovie/Model/APIResponse.dart';
 import 'package:imovie/Model/Movie.dart';
 
-class NowPlayingMovieAPI {
+class MovieAPI {
   static Future<List<Movie>> getMovies(String url) async {
     APIResponse apiRespose;
 
