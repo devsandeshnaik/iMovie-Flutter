@@ -15,6 +15,7 @@ class _MovieListState extends State<MovieList> {
 
   @override
   void initState() {
+    print(widget._url);
     MovieAPI.getMovies(widget._url).then((value) {
       setState(() {
         movies = value;
@@ -25,15 +26,19 @@ class _MovieListState extends State<MovieList> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: movies.length,
-      itemBuilder: (_, index) {
-        return MovieCard(
-          movie: movies[index],
-          onTap: didSelectMovie,
-        );
-      },
-    );
+    if (movies != null) {
+      return ListView.builder(
+        itemCount: movies.length,
+        itemBuilder: (_, index) {
+          return MovieCard(
+            movie: movies[index],
+            onTap: didSelectMovie,
+          );
+        },
+      );
+    } else {
+      return Center(child: Text("No Movies"));
+    }
   }
 
   didSelectMovie(Movie movie) {
